@@ -17,7 +17,7 @@ public class InitServiceInMemory {
 
 	protected final Log logger = LogFactory.getLog(getClass());
 
-	@Value("${pring.datasource.driverClassName:NONE}")
+	@Value("${spring.datasource.driverClassName}")
 	private String className;
 	
 	@Autowired
@@ -33,6 +33,10 @@ public class InitServiceInMemory {
 
 	private void fireInitialData() {
 		Car car = new Car(1, "PNA 879", "Renault Clio");
+		Car car2 = new Car(2, "PNA 880", "Renault Clio");
+		Car car3 = new Car(3, "PNA 881", "Renault Clio");
 		carService.save(car);
+		carService.save(car2);
+		carService.save(car3);
 	}
 }

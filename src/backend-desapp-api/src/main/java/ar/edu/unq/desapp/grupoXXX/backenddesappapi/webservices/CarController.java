@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,18 +19,20 @@ import ar.edu.unq.desapp.grupoXXX.backenddesappapi.services.CarService;
 
 @RestController
 @EnableAutoConfiguration
+@RequestMapping("/api/car")
 public class CarController {
 
     @Autowired
     private CarService carService;
-
-    @GetMapping("/api/cars")
-    public List<Car> allCars() {
-        List<Car> list = carService.findAll();;
-        return list;
-    }
     
-    @RequestMapping(value = "/api/version", method = RequestMethod.GET)
+  
+    @GetMapping("/all")
+    public ResponseEntity<List<Car>> allCars() {
+        List<Car> list = carService.findAll();
+        return ResponseEntity.ok().body(list);
+         }
+    
+    @RequestMapping(value = "/version", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<?> getVersion() {
     	String version = "0.2.1";

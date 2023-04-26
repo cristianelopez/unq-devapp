@@ -31,4 +31,31 @@ public class Car {
 		this.model = model;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getCarPatent() {
+		return carPatent;
+	}
+
+	public void setCarPatent(String carPatent) {
+		this.carPatent = carPatent;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+	
+	
+	
+
 }
